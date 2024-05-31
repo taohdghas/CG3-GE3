@@ -874,9 +874,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		    ImGui::ColorEdit4("materialData", &materialData->x);
 
 			if (ImGui::CollapsingHeader("Object")) {
-				ImGui::DragFloat3("Translation", &transform.translate.x, 0.01f);
-				ImGui::DragFloat3("Rotation", &transform.rotate.x, 0.01f);
-				ImGui::DragFloat3("Scale", &transform.scale.x, 0.01f);
+				ImGui::SliderFloat3("Translation", &transform.translate.x,-2.0f, 2.0f);
+				ImGui::SliderFloat3("Rotation", &transform.rotate.x,-5.0f,5.0f);
+				ImGui::SliderFloat3("Scale", &transform.scale.x,0.0f, 5.0f);
 			}
 			ImGui::End();
 			//transform.rotate.y += 0.03f;
