@@ -870,12 +870,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			ImGui_ImplDX12_NewFrame();
 			ImGui_ImplWin32_NewFrame();
 			ImGui::NewFrame();
-		
 			ImGui::Begin("Window");
-			ImGui::DragFloat3("color", &materialData->x, 0.01f);
-			ImGui::DragFloat3("Translation", &transform.translate.x, 0.01f);
-			ImGui::DragFloat3("Rotation", &transform.rotate.x, 0.01f);
-			ImGui::DragFloat3("Scale", &transform.scale.x, 0.01f);
+		    ImGui::ColorEdit4("materialData", &materialData->x);
+
+			if (ImGui::CollapsingHeader("Object")) {
+				ImGui::DragFloat3("Translation", &transform.translate.x, 0.01f);
+				ImGui::DragFloat3("Rotation", &transform.rotate.x, 0.01f);
+				ImGui::DragFloat3("Scale", &transform.scale.x, 0.01f);
+			}
 			ImGui::End();
 			//transform.rotate.y += 0.03f;
 			Matrix4x4 worldMatrix = MakeAffineMatrix(transform.scale, transform.rotate, transform.translate);
